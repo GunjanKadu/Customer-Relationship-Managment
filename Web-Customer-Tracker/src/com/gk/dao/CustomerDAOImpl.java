@@ -20,7 +20,6 @@ public class CustomerDAOImpl implements CustomerDao {
 
 	// Using Transaction so that we dont need to start and end the session
 	@Override
-	@Transactional
 	public List<Customer> getCustomers() {
 
 		// get the current Hibernate session
