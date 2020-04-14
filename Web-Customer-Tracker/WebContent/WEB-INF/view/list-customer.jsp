@@ -55,10 +55,12 @@
 						<td>${tempCustomer.lastName }</td>
 						<td>${tempCustomer.email }</td>
 						<td>
-							<!-- Update & Delete Link --> 
-							<a href="${updateLink}"> Update</a>
+							<!-- Update & Delete Link -->
+							 <a href="${updateLink}"> Update</a>
 										|
-							<a href="${deleteLink}"> Delete</a>
+							 <a href="${deleteLink}"
+							onclick="if(!(confirm('Are You Sure You Want To Delete This Customer')))return false">
+								Delete</a>
 						</td>
 					</tr>
 
