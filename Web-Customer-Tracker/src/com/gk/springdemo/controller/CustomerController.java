@@ -21,18 +21,18 @@ public class CustomerController {
 	@Autowired
 	private CustomerService customerService;
 
-	
-
 	@GetMapping("/list")
-	public String listCUstomers(Model theModel) {
-		
-		
+	public String listCustomers(Model theModel) {
 		// get customer from the service
 		List<Customer> theCustomers = customerService.getCustomers();
-
 		// add the customers to the model
 		theModel.addAttribute("customers", theCustomers);
-
 		return "list-customer";
 	}
+
+	@GetMapping("/showFormForAdd")
+	public String showForForAdd(Model theModel) {
+		return "customer-form";
+	}
+
 }
