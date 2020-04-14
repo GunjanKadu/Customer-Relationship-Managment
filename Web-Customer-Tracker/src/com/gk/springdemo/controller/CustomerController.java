@@ -47,21 +47,30 @@ public class CustomerController {
 
 		// Save the customer using our service
 		customerService.saveCustomer(theCustomer);
-		
+
 		return "redirect:/customer/list";
 	}
 
 	@GetMapping("/showFormForUpdate")
-	public String showFormForUpdate(@RequestParam("customerId")int theId,Model theModel) {
-		
+	public String showFormForUpdate(@RequestParam("customerId") int theId, Model theModel) {
+
 		// get the customer from the service
 		Customer theCustomer = customerService.getCustomers(theId);
-		
+
 		// set customer as a model attribute to prepopulte the form
-		theModel.addAttribute("customer",theCustomer);
-		
-		// send over to our form	
+		theModel.addAttribute("customer", theCustomer);
+
+		// send over to our form
 		return "customer-form";
+	}
+
+	@GetMapping("/delete")
+	public String delete(@RequestParam("customerId") int theId, Model theModel) {
+		// delete the customer
+		customerService.deleteCustomer(theId);
+
+		return "redirect:/customer/list";
+
 	}
 
 }
