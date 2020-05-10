@@ -21,5 +21,16 @@ public class CustomerRestExceptionHandler {
 	}
 
 	// And another exception handler to catch all
+	
+	@ExceptionHandler
+	public ResponseEntity<CustomerErrorResponse> handleException(Exception exc) {
+
+		// create CustomerErrorResponse
+		CustomerErrorResponse errorResponse = new CustomerErrorResponse(HttpStatus.BAD_REQUEST.value(), exc.getMessage(),
+				System.currentTimeMillis());
+
+		// return Response Entity
+		return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+	}
 
 }
